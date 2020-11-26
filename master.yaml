@@ -48,9 +48,9 @@ Mappings:
     CustomVariables:
         # sub-templates and other artifacts are hosted in this bucket
         ArtifactBucket:
-            Value: aws-bigdata-blog
+            Value: kanto.public
         ArtifactPrefix:
-            Value: artifacts/harmonize-search-analyze
+            Value: harmonize
         ArtifactSrcObject:
             Value: src.zip
 
@@ -60,7 +60,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             TemplateURL: !Sub
-                - "https://s3.amazonaws.com/${Bucket}/${Path}/infrastructure/vpc.yaml"
+                - "https://s3.ap-northeast-2.amazonaws.com/${Bucket}/${Path}/infrastructure/vpc.yaml"
                 - Bucket: !FindInMap [CustomVariables, ArtifactBucket, Value]
                   Path: !FindInMap [CustomVariables, ArtifactPrefix, Value]
             Parameters:
@@ -75,7 +75,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             TemplateURL: !Sub
-                - "https://s3.amazonaws.com/${Bucket}/${Path}/infrastructure/security-groups.yaml"
+                - "https://s3.ap-northeast-2.amazonaws.com/${Bucket}/${Path}/infrastructure/security-groups.yaml"
                 - Bucket: !FindInMap [CustomVariables, ArtifactBucket, Value]
                   Path: !FindInMap [CustomVariables, ArtifactPrefix, Value]
             Parameters:
@@ -86,7 +86,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             TemplateURL: !Sub
-                - "https://s3.amazonaws.com/${Bucket}/${Path}/infrastructure/load-balancers.yaml"
+                - "https://s3.ap-northeast-2.amazonaws.com/${Bucket}/${Path}/infrastructure/load-balancers.yaml"
                 - Bucket: !FindInMap [CustomVariables, ArtifactBucket, Value]
                   Path: !FindInMap [CustomVariables, ArtifactPrefix, Value]
             Parameters:
@@ -99,7 +99,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             TemplateURL: !Sub
-                - "https://s3.amazonaws.com/${Bucket}/${Path}/infrastructure/ecs-cluster.yaml"
+                - "https://s3.ap-northeast-2.amazonaws.com/${Bucket}/${Path}/infrastructure/ecs-cluster.yaml"
                 - Bucket: !FindInMap [CustomVariables, ArtifactBucket, Value]
                   Path: !FindInMap [CustomVariables, ArtifactPrefix, Value]
             Parameters:
@@ -114,7 +114,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             TemplateURL: !Sub
-                - "https://s3.amazonaws.com/${Bucket}/${Path}/infrastructure/elasticsearch.yaml"
+                - "https://s3.ap-northeast-2.amazonaws.com/${Bucket}/${Path}/infrastructure/elasticsearch.yaml"
                 - Bucket: !FindInMap [CustomVariables, ArtifactBucket, Value]
                   Path: !FindInMap [CustomVariables, ArtifactPrefix, Value]
             Parameters:
@@ -124,7 +124,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             TemplateURL: !Sub
-                - "https://s3.amazonaws.com/${Bucket}/${Path}/infrastructure/pipeline.yaml"
+                - "https://s3.ap-northeast-2.amazonaws.com/${Bucket}/${Path}/infrastructure/pipeline.yaml"
                 - Bucket: !FindInMap [CustomVariables, ArtifactBucket, Value]
                   Path: !FindInMap [CustomVariables, ArtifactPrefix, Value]
             Parameters:
@@ -149,7 +149,7 @@ Resources:
         Properties:
             TimeoutInMinutes: 90
             TemplateURL: !Sub
-                - "https://s3.amazonaws.com/${Bucket}/${Path}/infrastructure/jupyterspark.yaml"
+                - "https://s3.ap-northeast-2.ap-northeast-2.amazonaws.com/${Bucket}/${Path}/infrastructure/jupyterspark.yaml"
                 - Bucket: !FindInMap [CustomVariables, ArtifactBucket, Value]
                   Path: !FindInMap [CustomVariables, ArtifactPrefix, Value]
             Parameters:
