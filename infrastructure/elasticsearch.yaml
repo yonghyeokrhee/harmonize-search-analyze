@@ -18,12 +18,12 @@ Parameters:
   DedicatedMasterCount:
     Description: Number of master nodes in the cluster
     Type: Number
-    Default: 2
+    Default: 3
 
   InstanceCount:
     Description: Number of nodes in the cluster
     Type: Number
-    Default: 2
+    Default: 3
 
   VolumeSize:
     Description: Size of EBS volume for each node in (GB)
